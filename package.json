@@ -1,0 +1,19 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "description": "Little Ecommerce",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-web":"cd apps/ecommerce-web && npm run start",
+    "start-apps":"cd apps/ecommerce-app && npm run start"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "ecommerce-commons": "*"
+  },
+  "private": true
+}
