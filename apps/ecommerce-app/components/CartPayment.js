@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import moment from "moment";
 import { cartRequest } from 'ecommerce-commons/redux/reducers/CartSlice';
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const CartPayment = ({ list }) => {
     const dispatch = useDispatch();
@@ -45,31 +45,50 @@ const CartPayment = ({ list }) => {
     }, [list]);
 
     return (
-        <View>
+        <View style={styles.itemcontainer}>
             <Text style={{ fontWeight: 'bold' }}>Precio Total:{totalPrice}</Text>
             {
                 showSuccessAlert === false && (
                     <View>
-                        <Text>Algo a fallado con tu pedido. Intentalo de nuevo.</Text>
+                        <Text style={styles.price}>Algo a fallado con tu pedido. Intentalo de nuevo.</Text>
                     </View>
                 )
             }
             {
                 showSuccessAlert === true && (
                     <View>
-                        <Text>
+                        <Text style={styles.price}>
                             Tu pedido se ha procesado correctamente.
                         </Text>
                     </View>
                 )
             }
+            {
+                <Text style={styles.price}>{!user.id && ('Necesita iniciar sesión para comprar.')}</Text>
+            }
             <Button
                 onPress={() => createNewCart()}
+                disabled={user.id ? false : true}
                 title='Pagar'
 
             />
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    itemcontainer: {
+        marginTop: 10,
+        marginBottom: 10,
+        paddingTop: 30,
+        paddingBottom: 60,
+        backgroundColor: 'gray',
+    },
+    price: {
+        color: 'white'
+    }
+
+});
+
 
 export default CartPayment;
