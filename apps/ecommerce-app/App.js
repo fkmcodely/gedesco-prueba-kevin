@@ -5,6 +5,7 @@ import { store } from "ecommerce-commons/redux/store";
 import { NativeRouter, Route, Routes, Link } from "react-router-native";
 import Home from './views/Home';
 import Cart from './views/Cart';
+import Session from './views/Session';
 import NavBar from './components/NavBar';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/login" element={<Session />} />
           </Routes>
         </NativeRouter>
       </Provider>

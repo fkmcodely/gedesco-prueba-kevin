@@ -14,6 +14,7 @@ const NavBar = () => {
                 <Button
                     title="Iniciar Sesión"
                     color="green"
+                    onPress={() => navigate('/login')}
                 />
                 <Button
                     title="Carrito"
