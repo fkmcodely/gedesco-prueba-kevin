@@ -36,7 +36,6 @@ const ItemCart = ({ productId }) => {
                 <p>Cantidad: {quantity}</p>
             </div>
             <div className="flex justify-beetwen w-3/12">
-                {console.log(productId)}
                 <button
                     className="bg-green-400 p-2"
                     onClick={() => dispatch(addProduct(product))}>

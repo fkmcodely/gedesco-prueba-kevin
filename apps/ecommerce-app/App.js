@@ -1,22 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { greeting } from "ecommerce-commons";
+import { Provider } from "react-redux";
+import { store } from "ecommerce-commons/redux/store";
+import { NativeRouter, Route, Routes, Link } from "react-router-native";
+import Home from './views/Home';
+import Cart from './views/Cart';
+import NavBar from './components/NavBar';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up Asdspp.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Provider store={store}>
+        <NativeRouter>
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/cart" element={<Cart />} />
+          </Routes>
+        </NativeRouter>
+      </Provider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

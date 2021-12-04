@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import moment from "moment";
 import { cartRequest } from 'ecommerce-commons/redux/reducers/CartSlice';
+import { View, Text, Button } from "react-native";
 
 const CartPayment = ({ list }) => {
     const dispatch = useDispatch();
@@ -44,42 +45,30 @@ const CartPayment = ({ list }) => {
     }, [list]);
 
     return (
-        <div className="pd-4  pb-4">
-            {
-                list.map((product, index) => {
-                    const productSelected = productList.filter((productItem) => productItem.id === product.productId);
-
-                    return (
-                        <div className="flex border-gray-500 border-2 mb-5">
-                            <p>{index}.{productSelected[0].title}</p>
-                            <p>Total: {product.quantity * productSelected[0].price}$</p>
-                        </div>
-                    )
-                })
-            }
-            <p>Precio Total:{totalPrice}</p>
+        <View>
+            <Text>Precio Total:{totalPrice}</Text>
             {
                 showSuccessAlert === false && (
-                    <div>
-                        Algo a fallado con tu pedido. Intentalo de nuevo.
-                    </div>
+                    <View>
+                        <Text>Algo a fallado con tu pedido. Intentalo de nuevo.</Text>
+                    </View>
                 )
             }
             {
                 showSuccessAlert === true && (
-                    <div className="bg-green-800">
-                        <p>
+                    <View>
+                        <Text>
                             Tu pedido se ha procesado correctamente.
-                        </p>
-                    </div>
+                        </Text>
+                    </View>
                 )
             }
-            <button
-                onClick={() => createNewCart()}
-                className="p-2 bg-blue-300 w-full mt-10"
-            >PAGAR</button>
+            <Button
+                onPress={() => createNewCart()}
+                title='Pagar'
 
-        </div>
+            />
+        </View>
     );
 };
 

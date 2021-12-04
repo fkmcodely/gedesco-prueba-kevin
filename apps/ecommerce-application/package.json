@@ -24,7 +24,8 @@
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "expo-yarn-workspaces": "^1.6.0"
   },
   "private": true
 }
