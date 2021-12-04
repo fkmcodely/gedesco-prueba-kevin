@@ -10,6 +10,7 @@ import NavigationBar from './components/NavigationBar';
 import Session from './routes/Session';
 import Product from './routes/Product';
 import Cart from "./routes/Cart";
+import Orders from "./routes/Orders";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path="/session" element={<Session />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </BrowserRouter>
     </Provider>
