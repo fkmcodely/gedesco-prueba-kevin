@@ -7,9 +7,7 @@ import ProductCard from '../components/ProductCard';
 const Home = () => {
     const dispatch = useDispatch();
     const list = useSelector(state => state.products.list);
-
     useEffect(() => dispatch(productRequest()), []);
-
     return (
         <View style={styles.container}>
             <Text>Lista de productos</Text>

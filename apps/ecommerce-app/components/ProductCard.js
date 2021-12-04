@@ -16,7 +16,7 @@ const ProductCard = ({ item }) => {
                 style={{ width: '100%', height: 200 }} />
             <Text>{item.title}</Text>
             <Text>{item.price}</Text>
-            <Button onPress={addProductToCart()} title="COMPRAR" />
+            <Button onPress={() => addProductToCart()} title="COMPRAR" />
         </View>
     )
 }

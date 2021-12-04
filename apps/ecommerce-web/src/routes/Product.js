@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { fetchSingleProduct } from "ecommerce-commons/services/products";
 import { useSelector, useDispatch } from 'react-redux';
+import { fetchSingleProduct } from "ecommerce-commons/services/products";
 import { addProduct } from 'ecommerce-commons/redux/reducers/CartSlice';
 
 const Product = () => {

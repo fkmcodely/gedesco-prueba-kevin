@@ -5,6 +5,8 @@ import CartPayment from '../components/CartPayment';
 import ItemCart from '../components/ItemCart';
 const Cart = () => {
     const cartProducts = useSelector(state => state.cart.products);
+    const cart = useSelector(state => state.cart);
+
     return (
         <SafeAreaView style={styles.viewfix}>
             <ScrollView style={styles.productlist}>

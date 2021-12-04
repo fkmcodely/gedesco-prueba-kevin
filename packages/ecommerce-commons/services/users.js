@@ -32,8 +32,8 @@ export const createUser = async (user) => {
 export const loginUser = async (username, password) => {
     try {
         const checkUser = await axios.post(LOGIN, {
-            username,
-            password
+            username: username,
+            password: password
         });
         return checkUser.data;
     } catch (err) {

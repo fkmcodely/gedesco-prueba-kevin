@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { loginUser } from 'ecommerce-commons/services/users';
 import { getAllUsers } from 'ecommerce-commons/services/users';
-import { userRequest } from "ecommerce-commons/redux/reducers/UserSlice";
-import { createUser } from 'ecommerce-commons/services/users';
+import { userLoginRequest } from "ecommerce-commons/redux/reducers/UserSlice"
 
 const Session = () => {
     const { register, handleSubmit, reset } = useForm({});
@@ -16,20 +15,20 @@ const Session = () => {
     const navigate = useNavigate();
     const [error, setError] = useState();
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [load, setLoad] = useState(false);
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const [res, setRes] = useState();
     const loginUserCall = async () => {
-
         try {
             const isUser = await loginUser(username, password);
             const users = await getAllUsers(username);
-            setRes(`${username} y ${password}`)
+            setLoad(username + password)
             if (isUser?.token) {
-                const profile = users.find(item => item.username === userInfo.username);
+                const profile = users.find(item => item.username === username);
                 dispatch(userLoginRequest(profile))
-                setRes(JSON.stringify(profile))
                 navigate('/')
             } else {
                 setError(true);
@@ -52,9 +51,21 @@ const Session = () => {
     return (
         <View style={styles.containerLogin}>
             <Text>Iniciar Sesión</Text>
+            <Text>{'kevin 2'}</Text>
+            <Text>{load}</Text>
             <Text>{res}</Text>
-            <TextInput style={styles.input} value={username} onChange={(ev) => setUsername(ev.target.value)} placeholder='Usuario' />
-            <TextInput type="password" style={styles.input} value={password} onChange={(ev) => setPassword(ev.target.value)} placeholder='Contraseña' />
+            <TextInput
+                style={styles.input}
+                placeholder="Usuario"
+                onChangeText={text => setUsername(text)}
+                defaultValue={username}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Contrasela"
+                onChangeText={text => setPassword(text)}
+                defaultValue={password}
+            />
             {error && (<Text>Usuario o Contraseña incorrectos.</Text>)}
             <Button title='Aceptar' type="submit" onPress={() => loginUserCall()} />
         </View>
