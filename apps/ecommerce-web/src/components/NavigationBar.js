@@ -16,12 +16,7 @@ const NavigationBar = props => {
             <div className="flex">
                 {isLogged ? <p className=" pd-2 rounded-md bg-green-400">Bienvenido de nuevo {user && (user)}</p>
                     : <button className="bg-blue-200 mr-10 rounded-md p-2" onClick={() => navigate('/session')}>Iniciar Sesión</button>}
-                {isLogged && (
-                    <button
-                        onClick={() => navigate('/orders')}
-                        className="ml-5 bg-blue-200 mr-10 p-2 rounded-md">
-                        Ver pedidos
-                    </button>)}
+
                 <img
                     onClick={() => navigate('/cart')}
                     className="w-10 cursor-pointer"
