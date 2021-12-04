@@ -46,7 +46,7 @@ const CartPayment = ({ list }) => {
 
     return (
         <View>
-            <Text>Precio Total:{totalPrice}</Text>
+            <Text style={{ fontWeight: 'bold' }}>Precio Total:{totalPrice}</Text>
             {
                 showSuccessAlert === false && (
                     <View>

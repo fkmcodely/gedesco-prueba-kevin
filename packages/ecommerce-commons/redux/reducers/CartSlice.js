@@ -53,7 +53,11 @@ const deleteProductItem = (state, action) => {
     if (existItemIntoCart) {
         state.products = state.products.map((product) => {
             if (product.productId === id) {
-                return { productId: product.productId, quantity: parseInt(product.quantity) - 1 }
+                if (parseInt(product.quantity) === 0) {
+                    return { productId: product.productId, quantity: 0 }
+                } else {
+                    return { productId: product.productId, quantity: parseInt(product.quantity) - 1 }
+                }
             } else {
                 return product;
             }
