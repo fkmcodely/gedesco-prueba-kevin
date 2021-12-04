@@ -14,22 +14,11 @@ const Orders = () => {
         <section className="px-10 pt-10 pb-4">
             <h2>Listado de pedidos</h2>
             <div className="flex flex-wrap justify-between">
-                {
-                    orders?.map((order, index) => {
 
-                        return (
-                            <div></div>
-                        )
-                    })
-                }
             </div>
         </section>
     );
 };
 
-const Order = () => {
-
-    return ()
-}
 
 export default Orders;
